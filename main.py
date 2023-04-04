@@ -3,13 +3,12 @@ import random
 from player import *
 from enemy import *
 from debug import *
+from settings import *
 
 # initialize pygame
 pygame.init()
 
 # set up the game window
-WIDTH = 800
-HEIGHT = 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Chrono Detective Star")
 
@@ -21,16 +20,15 @@ running = True
 
 # Create player instance
 player = Player(WIDTH // 2, HEIGHT // 2)
-all_sprites = pygame.sprite.Group()
+the_player = pygame.sprite.GroupSingle()
 debug_sprite = pygame.sprite.Group()
-all_sprites.add(player)
+the_player.add(player)
 
 # Create enemy instances
 num_enemies = 5
 enemies = pygame.sprite.Group()
 for i in range(num_enemies):
     enemy = Enemy(random.randint(0, WIDTH), random.randint(0, HEIGHT))
-    all_sprites.add(enemy)
     enemies.add(enemy)
 
 # Main game loop
@@ -43,14 +41,15 @@ while running:
     debug((player.health, player.score))
     # Update all sprites
     player_pos = pygame.math.Vector2(player.rect.center)
-    all_sprites.update(player_pos)
+    enemies.update(player_pos)
 
     # Check for collisions between player and enemies
     if pygame.sprite.spritecollide(player, enemies, True):
         player.health -= 10
 
     # Draw all sprites
-    all_sprites.draw(screen)
+    enemies.draw(screen)
+    the_player.draw(screen)
     debug_sprite.draw(screen)
 
     # Flip the display

@@ -1,8 +1,5 @@
 import pygame
-from weapon import *
-
-WIDTH = 800
-HEIGHT = 600
+from settings import *
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, max_health=100):

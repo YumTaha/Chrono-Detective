@@ -1,4 +1,5 @@
 import pygame
+from settings import *
 
 WIDTH = 800
 HEIGHT = 600
@@ -12,7 +13,7 @@ class Enemy(pygame.sprite.Sprite):
 
         self.direction = pygame.math.Vector2()
         self.pos = pygame.math.Vector2(self.rect.center)
-        self.speed = 3
+        self.speed = 1
 
         self.max_health = max_health
         self.health = max_health
@@ -35,7 +36,7 @@ class Enemy(pygame.sprite.Sprite):
         if self.rect.bottom > HEIGHT:
             self.rect.bottom = HEIGHT
 
-    def update(self, player_pos, *args, **kwargs):
+    def update(self, player_pos):
         self.move(player_pos)
 
     def draw(self, surface):
