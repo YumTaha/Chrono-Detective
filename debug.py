@@ -6,5 +6,4 @@ def debug(info, y=10, x=10):
     disp_surf = pygame.display.get_surface()
     debug_surf = font.render(str(info), True,'white')
     debug_rect = debug_surf.get_rect(topleft = (x,y))
-    pygame.draw.rect(disp_surf, 'red', debug_rect)
     disp_surf.blit(debug_surf, debug_rect)

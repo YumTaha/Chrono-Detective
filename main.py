@@ -38,10 +38,14 @@ while running:
         if event.type == pygame.QUIT or player.health <0:
             running = False
     screen.fill((0, 0, 0))
-    debug((player.health, player.score))
+
+    # debugger
+    debug((player.rect.left, player.rect.right))
+
     # Update all sprites
     player_pos = pygame.math.Vector2(player.rect.center)
     enemies.update(player_pos)
+    the_player.update()
 
     # Check for collisions between player and enemies
     if pygame.sprite.spritecollide(player, enemies, True):

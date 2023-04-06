@@ -4,7 +4,8 @@ from settings import *
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, max_health=100):
         super().__init__()
-        self.image = pygame.Surface((50, 50))
+        self.X = 50; self.Y = 50
+        self.image = pygame.Surface((self.X, self.Y))
         self.image.fill((255, 255, 0))  # Yellow color for player
         self.rect = self.image.get_rect(center=(x, y))
 
@@ -33,9 +34,6 @@ class Player(pygame.sprite.Sprite):
         else:
             self.direction.y = 0
 
-        if keys[pygame.K_SPACE]:
-            self.shoot()
-
     def move(self):
         # normalizing a vector
         if self.direction.magnitude() > 0:
@@ -43,18 +41,18 @@ class Player(pygame.sprite.Sprite):
         # print(self.direction)
         # horizontal movement
         self.pos.x += self.direction.x * self.speed
-        if self.pos.x < 0:
-            self.pos.x = 0
-        elif self.pos.x > WIDTH:
-            self.pos.x = WIDTH
+        if self.pos.x < (self.X // 2):
+            self.pos.x = (self.X // 2)
+        elif self.pos.x > WIDTH - (self.X // 2):
+            self.pos.x = WIDTH - (self.X // 2)
         self.rect.centerx = self.pos.x
 
         # vertical movement
         self.pos.y += self.direction.y * self.speed
-        if self.pos.y < 0:
-            self.pos.y = 0
-        elif self.pos.y > HEIGHT:
-            self.pos.y = HEIGHT
+        if self.pos.y < (self.Y // 2):
+            self.pos.y = (self.Y // 2)
+        elif self.pos.y > HEIGHT - (self.Y // 2):
+            self.pos.y = HEIGHT - (self.Y // 2)
         self.rect.centery = self.pos.y
 
     def update(self, *args, **kwargs):
