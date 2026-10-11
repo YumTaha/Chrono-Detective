@@ -1,20 +1,32 @@
 # Chrono-Detective
-In this game, the player takes on the role of a detective who has the 
-ability to travel through time. The detective's mission is to solve 
-a series of crimes that have been committed throughout history.
 
-To solve the crimes, the player must use their time-traveling abilities 
-to visit different eras and gather clues. The game will have different
-levels, each set in a different time period, such as Ancient Egypt, 
-Medieval Europe, or the Wild West.
+An unfinished Python/Pygame game prototype built around a time-travel detective concept.
 
-As the player collects clues, they will have to use their deduction skills 
-to piece together the evidence and solve the crime. The game will also include 
-puzzles and mini-games that will help the player uncover hidden information 
-and advance through the levels.
+## Project status
 
-To add to the challenge, the player will have to be careful not to alter 
-history or create paradoxes that could jeopardize their investigation. 
-The game will keep track of the player's actions and decisions, 
-and their choices will affect the outcome of the story.
+The current code implements a basic player-and-enemy game loop, enemy pursuit, and health loss on collisions. The historical investigations, clues, puzzles, and branching story described below are design ideas, not completed gameplay features.
 
+## Run the prototype
+
+Requires Python 3 and a graphical desktop.
+
+```bash
+git clone https://github.com/YumTaha/Chrono-Detective.git
+cd Chrono-Detective
+python -m pip install pygame
+python main.py
+```
+
+Close the window to exit. This early prototype may need further development.
+
+## Original concept
+
+A detective travels between historical eras, such as Ancient Egypt, Medieval Europe, and the Wild West, to gather clues and solve crimes. Planned mechanics include deduction, puzzles, mini-games, and choices that can affect the story or create time-travel paradoxes.
+
+## Repository guide
+
+- `main.py` — initialization, game loop, enemies, and collision handling.
+- `player.py` — player behavior.
+- `enemy.py` — enemy behavior.
+- `settings.py` — game configuration.
+- `debug.py` — debugging helpers.
